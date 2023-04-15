@@ -1,8 +1,8 @@
 const sectors = [{
   name: "Sector 1",
-  color: "wineRed"
+  color: "bg-wineRed"
 }, 
-{name: "Sector 2", color: "sideBar"}, {name: "Sector 3", color: "ochre"}];
+{name: "Sector 2", color: "bg-sideBar"}, {name: "Sector 3", color: "bg-ochre"}];
 
 export default function Home() {
   return (
@@ -10,9 +10,9 @@ export default function Home() {
       <p className="text-wineRed">DISCUSSION FORUM</p>
       <div className="ml-10">
         Filters
-        <div className="bg-white space-x-4 p-2 text-sm rounded-md shadow-xl my-5 p-5" style={{display: "flex", flexDirection: "row"}}>
+        <div className="bg-white space-x-4 p-2 text-sm rounded-md shadow-xl my-2 p-5" style={{display: "flex", flexDirection: "row"}}>
           {sectors.map((sector) => 
-            <span key={sector.name} className={`font-sans w-max bg-${sector.color} text-white rounded-3xl px-5 py-2`}>{sector.name}</span>)}
+            <button key={sector.name} className={`font-sans w-max ${sector.color} border-none text-white rounded-3xl px-5 py-2`}>{sector.name}</button>)}
           <input type="text" placeholder="Search here"></input>
         </div>
         <div className="p-2 overflow-y-scroll h-screen">
@@ -38,9 +38,9 @@ const comments = Array(5).fill({
 });
 
 const Card = (comment) =>
-  <div className="bg-white mt-10 p-5 rounded-md shadow-xl">
-    <p className="text-sm text-blue-700 text-right">{comment.timeStamp}</p>
-    {comment.image && <img src={comment.image} className="object-contain px-10" />}
+  <div className="flex flex-col items-center bg-white mt-5 p-5 rounded-md shadow-xl">
+    <p className="text-sm text-blue-700 self-end">{comment.timeStamp}</p>
+    {comment.image && <img src={comment.image} className="object-contain px-10 w-3/4 justify-center" />}
     <div className="flex flex-row">
       <div className="flex flex-col h-full items-center">
         <img src={comment.user.profilePicture} className="object-contain w-14"/>
@@ -50,7 +50,7 @@ const Card = (comment) =>
           <span>{comment.user.name}</span>
           {comment.tags.map((tag) => {
             const sector = sectors.find((value) => value.name = tag);
-            return <div key={sector.name + Math.random()} className={`font-sans w-max bg-${sector.color} text-xs text-white rounded-3xl px-5 py-2`}>{tag}</div>
+            return <div key={sector.name + Math.random()} className={`font-sans w-max ${sector.color} text-xs text-white rounded-3xl px-5 py-2`}>{tag}</div>
           })}
         </div>
         <div className="mt-5">

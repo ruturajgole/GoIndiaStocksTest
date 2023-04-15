@@ -25,13 +25,13 @@ export default function FeaturedCompanies() {
     <div>
       <p className="text-wineRed">FEATURED COMPANIES</p>
       <div  className="marquee bg-featuredCompaniesBar">
-      <div className="track flex">
-        {
-          companies.concat(companies.concat(companies)).map((company) =>
-            <img key={company.logo + Math.random()} className="mx-10 bg-featuredCompaniesBar" style={{width: "100px", height: "100px", objectFit: "contain"}} src={company.logo} />
-          )
-        }
-      </div>
+        <div className="track flex">
+          {
+            companies.concat(companies.concat(companies)).map((company) =>
+              <img key={company.logo + Math.random()} className="mx-10 bg-featuredCompaniesBar" style={{width: "100px", height: "100px", objectFit: "contain"}} src={company.logo} />
+            )
+          }
+        </div>
       </div>
     </div>
   )

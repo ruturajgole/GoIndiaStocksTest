@@ -64,19 +64,35 @@ button {
   border-radius: 5px;
 }
 
+.marquee-stocks {
+  position: relative;
+  width: 98.9vw;
+  max-width: 100%;
+  height: 3vh;
+  overflow: hidden;
+}
+
+.track-stocks {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 200s linear infinite;
+}
+
+
 .marquee {
   position: relative;
   width: 98.9vw;
   max-width: 100%;
-  height: 15vh;
-  overflow-x: hidden;
+  height: 10vh;
+  overflow: hidden;
 }
 
 .track {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 10s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 @keyframes marquee {
