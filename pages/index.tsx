@@ -6,7 +6,11 @@ const sectors = [{
 }, 
 {name: "Sector 2", color: "bg-sideBar"}, {name: "Sector 3", color: "bg-ochre"}];
 
-export default function Home() {
+type Props = {
+  activeTab: string;
+}
+
+export default function Home({activeTab}: Props) {
   const [sectorFilters, setSectorFilters] = useState([]);
 
   const toggleSectorFilter = (sectorFilter) =>
@@ -14,9 +18,8 @@ export default function Home() {
     ? setSectorFilters(sectorFilters.filter((filter) => sectorFilter != filter))
     : setSectorFilters([...sectorFilters, sectorFilter]);
 
-  console.log(sectorFilters);
   return (
-    <div className="bg-background p-2">
+    <div className={`${activeTab === "Discussion" ? "block" : "hidden"} md:block bg-background p-2`}>
       <p className="text-wineRed">DISCUSSION FORUM</p>
       <div className="ml-10">
         Filters

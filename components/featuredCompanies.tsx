@@ -28,7 +28,7 @@ export default function FeaturedCompanies() {
         <div className="track flex">
           {
             companies.concat(companies.concat(companies)).map((company) =>
-              <img key={company.logo + Math.random()} className="mx-10 bg-featuredCompaniesBar" style={{width: "100px", height: "100px", objectFit: "contain"}} src={company.logo} />
+              <img key={company.logo + Math.random()} className="mx-10 w-[100px] object-contain bg-featuredCompaniesBar border-none md:border-black md:border-solid md:border-2 md:rounded-full" src={company.logo} />
             )
           }
         </div>

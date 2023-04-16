@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import Layout from "../components/layout/Layout";
 import { createContext, useContext, useState } from "react";
 
-export const SideBarContext = createContext(null);
+export const Context = createContext(null);
 
 const news = [{
   image: "./news/borough-market.jpg",
@@ -18,21 +18,22 @@ const news = [{
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("Discussion");
 
   return (
-    <SideBarContext.Provider value={{sidebarOpen, setSidebarOpen}}>
+    <Context.Provider value={{sidebarOpen, setSidebarOpen, activeTab, setActiveTab}}>
       <Layout>
-        <Component {...pageProps} />
+        <Component {...pageProps} activeTab={activeTab} />
         <MarketStories />
       </Layout>
-    </SideBarContext.Provider>
+    </Context.Provider>
   );
 }
 
 const MarketStories = () => {
-  const {sidebarOpen} = useContext(SideBarContext);
+  const {sidebarOpen, activeTab} = useContext(Context);
 
-  return <div className="bg-slate-100 w-3/4 p-2">
+  return <div className={`${activeTab === "Market" ? "block" : "hidden"} md:block bg-slate-100 w-3/4 p-2`}>
     <p className="text-wineRed">MARKET STORIES</p>
     <div className={`rounded-sm grid ${sidebarOpen ? "grid-cols-1" : "grid-cols-2"} gap-2`}>
       {news.map((item) => 

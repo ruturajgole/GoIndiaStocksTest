@@ -12,7 +12,8 @@ module.exports = {
         featuredCompaniesBar: "#e8f4fc",
         background: "#f8f4f4",
         wineRed: "#b0241c",
-        ochre: "#f0cc5c"
+        ochre: "#f0cc5c",
+        darkOcean: "#182c44"
       },
     },
   },
