@@ -8,7 +8,7 @@ export default function Header() {
   const fetchStocks = async () => setStockPrices(
     await (await fetch("/api/repository/getStocks")).json());
 
-  fetchStocks();
+  //fetchStocks();
   return (
     <div>
       <div className="flex flex-row items-center justify-between bg-white">

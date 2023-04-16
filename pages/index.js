@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const sectors = [{
   name: "Sector 1",
   color: "bg-wineRed"
@@ -5,6 +7,14 @@ const sectors = [{
 {name: "Sector 2", color: "bg-sideBar"}, {name: "Sector 3", color: "bg-ochre"}];
 
 export default function Home() {
+  const [sectorFilters, setSectorFilters] = useState([]);
+
+  const toggleSectorFilter = (sectorFilter) =>
+    sectorFilters.includes(sectorFilter)
+    ? setSectorFilters(sectorFilters.filter((filter) => sectorFilter != filter))
+    : setSectorFilters([...sectorFilters, sectorFilter]);
+
+  console.log(sectorFilters);
   return (
     <div className="bg-background p-2">
       <p className="text-wineRed">DISCUSSION FORUM</p>
@@ -12,11 +22,16 @@ export default function Home() {
         Filters
         <div className="bg-white space-x-4 p-2 text-sm rounded-md shadow-xl my-2 p-5" style={{display: "flex", flexDirection: "row"}}>
           {sectors.map((sector) => 
-            <button key={sector.name} className={`font-sans w-max ${sector.color} border-none text-white rounded-3xl px-5 py-2`}>{sector.name}</button>)}
+            <button 
+              onClick={() => toggleSectorFilter(sector.name)} 
+              key={sector.name} 
+              className={`font-sans ${sectorFilters.includes(sector.name) ? ("outline-2 outline-dashed outline-offset-2 outline-black") : "outline-none"} w-max ${sector.color} text-white rounded-3xl px-5 py-2`}>{sector.name}</button>)}
           <input type="text" placeholder="Search here" className="pl-10 bg-origin-border bg-left bg-[length:25px_25px] bg-[url('/search-icon.png')] bg-no-repeat shadow-[inset_0_1px_4px_rgba(0,0,0,0.6)] bg-searchBar p-2 rounded-3xl placeholder:pl-10"></input>
         </div>
         <div className="p-2 overflow-y-scroll h-screen">
-          {comments.map((comment) => <Card key={comment.likes + Math.random()} {...comment} />)}
+          {comments
+          .filter((comment) => !sectorFilters.length || (comment.tags.some(r=> sectorFilters.includes(r))))
+          .map((comment) => <Card key={comment.likes + Math.random()} {...comment} />)}
         </div>
       </div>
     </div>
