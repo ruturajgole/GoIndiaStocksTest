@@ -1,10 +1,11 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, useContext, useState } from "react";
 import Header from "../header";
 import Sidebar from "../sidebar/Sidebar";
 import FeaturedCompanies from "../featuredCompanies";
+import { SideBarContext } from "../../pages/_app";
 
 const Layout = (props: PropsWithChildren) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const {sidebarOpen, setSidebarOpen} = useContext(SideBarContext);
   return (
     <div className="grid min-h-screen grid-rows-header bg-zinc-100">
       <div>
@@ -14,7 +15,7 @@ const Layout = (props: PropsWithChildren) => {
 
       <div className={`grid gap-10 ${sidebarOpen ? "grid-cols-[20%_50%_30%]" : "grid-cols-[0%_50%_50%]"}`}>
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
-        {props.children}
+          {props.children}
       </div>
     </div>
   );

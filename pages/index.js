@@ -13,7 +13,7 @@ export default function Home() {
         <div className="bg-white space-x-4 p-2 text-sm rounded-md shadow-xl my-2 p-5" style={{display: "flex", flexDirection: "row"}}>
           {sectors.map((sector) => 
             <button key={sector.name} className={`font-sans w-max ${sector.color} border-none text-white rounded-3xl px-5 py-2`}>{sector.name}</button>)}
-          <input type="text" placeholder="Search here"></input>
+          <input type="text" placeholder="Search here" className="pl-10 bg-origin-border bg-left bg-[length:25px_25px] bg-[url('/search-icon.png')] bg-no-repeat shadow-[inset_0_1px_4px_rgba(0,0,0,0.6)] bg-searchBar p-2 rounded-3xl placeholder:pl-10"></input>
         </div>
         <div className="p-2 overflow-y-scroll h-screen">
           {comments.map((comment) => <Card key={comment.likes + Math.random()} {...comment} />)}
@@ -65,4 +65,3 @@ const Card = (comment) =>
       </div>
     </div>
   </div>
-  

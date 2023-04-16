@@ -20,12 +20,9 @@ const Sidebar = ({ open, navItems = defaultNavItems, setOpen }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={classNames({
-          "flex flex-col justify-between bg-sideBar text-zinc-50 md:w-full md:sticky md:top-16 md:z-0 top-0 z-20 fixed": true,
-          "md:h-[calc(100vh_-_64px)] h-full w-[300px]": true, // for height and width
-          "-translate-x-full transition duration-500 ease-in-out": !open
-        })
-      }
+    <div className={`transition ease-in-out duration-500 flex flex-col justify-between bg-sideBar text-zinc-50 md:w-full md:sticky md:top-16 md:z-0 top-0 z-20 fixed
+         md:h-[calc(100vh_-_64px)] h-full w-[300px]": true, // for height and width
+         ${!open ? "-translate-x-full" : "translate-x-0"}`}
       ref={ref}>
       <button onClick={() => setOpen(!open)} className="border-none absolute w-5 h-35 rounded-r-md -right-5 top-1/3 bg-sideBar">
         <div className="w-2.5 relative transform translate-y-1/2 overflow-hidden inline-block">
@@ -39,7 +36,7 @@ const Sidebar = ({ open, navItems = defaultNavItems, setOpen }: Props) => {
           <li className={"flex flex-row items-center p-2 mx-2"}>
             <img src="./sidebar/profile-picture.png" className="object-contain w-10"/>
             <span className="text-white font-sans">Hello, User</span>
-            <img src="./sidebar/notifications.jpg" className="object-contain w-5 ml-20" />
+            <img src="./sidebar/notifications.jpg" className="object-contain w-5 ml-[40%]" />
           </li>          
           <hr className="w-full h-0.5 bg-gray opacity-50"/>
           {navItems.map((item, index) => {
