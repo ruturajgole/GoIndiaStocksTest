@@ -1,26 +1,15 @@
-const companies = [{
-  logo: "./companies/capri-global.png"
-},
-{
-  logo: "./companies/ganesh-housing.png"
-},
-{
-  logo: "./companies/fino-payments.png"
-},
-{
-  logo: "./companies/gravita-india.png"
-},
-{
-  logo: "./companies/hira-godawari.png"
-},
-{
-  logo: "./companies/data-patterns.png"
-},
-{
-  logo: "./companies/deep-industries.png"
-}];
+import { useEffect, useState } from "react"
 
 export default function FeaturedCompanies() {
+  const [companies, setCompanies] = useState([]);
+
+  const fetchCompanies = async () => setCompanies(
+    await (await fetch("/api/repository/getFeaturedCompanies")).json());
+
+  useEffect(() => {
+    fetchCompanies();
+  }, []);
+
   return (
     <div>
       <p className="hidden md: block text-wineRed">FEATURED COMPANIES</p>

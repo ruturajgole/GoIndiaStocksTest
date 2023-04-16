@@ -1,5 +1,5 @@
 import React from "react";
-import { NavItem } from "./Sidebar";
+import { NavItem } from ".";
 
 export const defaultNavItems: NavItem[] = [
   {

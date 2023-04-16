@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useContext, useState } from "react";
 import Header from "../header";
-import Sidebar from "../sidebar/Sidebar";
-import FeaturedCompanies from "../featuredCompanies";
+import Sidebar from "../sidebar";
+import FeaturedCompanies from "../featured_companies";
 import { Context } from "../../pages/_app";
 
 const Layout = (props: PropsWithChildren) => {

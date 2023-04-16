@@ -1,23 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Stocks = {
-  name: string,
-  price: number,
-  change: number
-};
-
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ReadonlyArray<Stocks>>
+  res: NextApiResponse
 ) {
   const { path } = req.query;
-  if(path[0] === "getStocks"){
-    // res.status(200).json([    
-    //         {
-    //             "name": "MAHASTEEL",
-    //             "price": 11414.638035461245,
-    //             "change": 20.579118332894474
-    //         }]);
+  if(path === "getStocks"){
     res.status(200).json([
         {
             "name": "MAHASTEEL",
@@ -270,5 +258,63 @@ export default function handler(
             "change": 18.590105438426384
         }
     ]);
-    }
+  } else if(path === "getFeaturedCompanies") {
+    res.status(200).json([{
+        name: "Capri Global",
+        logo: "./companies/capri-global.png"
+      },
+      {
+        name: "Ganesh Housing",
+        logo: "./companies/ganesh-housing.png"
+      },
+      {
+        name: "Fino Payments",
+        logo: "./companies/fino-payments.png"
+      },
+      {
+        name: "Gravita India",
+        logo: "./companies/gravita-india.png"
+      },
+      {
+        name: "Hira Godawari",
+        logo: "./companies/hira-godawari.png"
+      },
+      {
+        name: "Data Patterns",
+        logo: "./companies/data-patterns.png"
+      },
+      {
+        name: "Deep Industries",
+        logo: "./companies/deep-industries.png"
+      }])
+  } else if(path === "getStories"){
+    res.status(200).json([{
+        image: "./news/borough-market.jpg",
+        message: "Lorem Ipsum is simply dumym text of the printing and typesetting industry"
+      }, {
+        image: "./news/stock-building.jpg",
+        message: "Lorem Ipsum is simply dumym text of the printing and typesetting industry"
+      }, {
+        image: "./news/borough-market.jpg",
+        message: "Lorem Ipsum is simply dumym text of the printing and typesetting industry"
+    }]);
+  } else if(path === "getForum"){
+    const sample = {
+        timeStamp: "2 min ago",
+        image: "./comments/infibeam.jpg",
+        user: {
+          name: "Lorem Ipsum",
+          profilePicture: "./placeholder-profile-picture.jpg"
+        },
+        tags: ["Sector 1"],
+        message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is",
+        likes: 2000,
+        views: 2000,
+        replies: 2000
+      };
+
+    res.status(200).json([sample].concat(Array(5).fill({...sample, image: null})))
+  } else {
+    res.status(500).json({message: "API Not Found"});
+  }
 }

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   activeTab: string,
@@ -12,7 +12,10 @@ export default function Header({activeTab, setActiveTab}: Props) {
   const fetchStocks = async () => setStockPrices(
     await (await fetch("/api/repository/getStocks")).json());
 
-  //fetchStocks();
+  useEffect(() => {
+    fetchStocks();
+  }, []);
+
   return (
     <div>
       <div className="flex flex-row items-center justify-center md:justify-between bg-white">
@@ -23,7 +26,7 @@ export default function Header({activeTab, setActiveTab}: Props) {
         <div className="flex md:hidden">
           <img src="./placeholder-profile-picture.jpg" className='w-[50px] object-contain'/>
         </div>
-        <div className="hidden mx-20 md:flex flex-row basis-1/4 justify-evenly items-center">
+        <div className="hidden mx-20 md:flex space-x-2 flex-row basis-1/4 justify-evenly items-center">
           <a>Contact Us</a>
           <button>SIGN UP</button>
           <button>SIGN IN</button>
