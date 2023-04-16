@@ -23,12 +23,12 @@ const companies = [{
 export default function FeaturedCompanies() {
   return (
     <div>
-      <p className="text-wineRed">FEATURED COMPANIES</p>
+      <p className="hidden md: block text-wineRed">FEATURED COMPANIES</p>
       <div  className="marquee bg-featuredCompaniesBar">
-        <div className="track flex">
+        <div className="track flex ">
           {
             companies.concat(companies.concat(companies)).map((company) =>
-              <img key={company.logo + Math.random()} className="mx-10 w-[100px] object-contain bg-featuredCompaniesBar border-none md:border-black md:border-solid md:border-2 md:rounded-full" src={company.logo} />
+              <img key={company.logo + Math.random()} className="mx-10 my-1 w-[70px] h-[70px] md:w-[100px] md:h-[100px] object-contain bg-featuredCompaniesBar md:border-none border-wineRed border-solid border-2 md:rounded-none rounded-[100%]" src={company.logo} />
             )
           }
         </div>

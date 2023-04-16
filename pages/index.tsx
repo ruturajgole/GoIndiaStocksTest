@@ -20,7 +20,7 @@ export default function Home({activeTab}: Props) {
 
   return (
     <div className={`${activeTab === "Discussion" ? "block" : "hidden"} md:block bg-background p-2`}>
-      <p className="text-wineRed">DISCUSSION FORUM</p>
+      <p className="hidden md:block text-wineRed">DISCUSSION FORUM</p>
       <div className="ml-10">
         Filters
         <div className="bg-white space-x-4 p-2 text-sm rounded-md shadow-xl my-2 p-5" style={{display: "flex", flexDirection: "row"}}>

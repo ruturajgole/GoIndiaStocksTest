@@ -49,6 +49,6 @@ export default function Header({activeTab, setActiveTab}: Props) {
           className={`${activeTab === "Discussion" ? "bg-darkOcean border-y-0 border-x-0 border-b-4 border-wineRed" : "border-none"}`}>Discussion Forum</button>
         <button onClick={() => setActiveTab("Market")} className={`${activeTab === "Market" ? "bg-darkOcean border-y-0 border-x-0 border-b-4 border-wineRed" : "border-none"}`}>Market Stories</button>
       </div>
-      </div>
+    </div>
   )
 }
