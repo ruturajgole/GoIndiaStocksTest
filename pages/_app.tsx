@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} activeTab={activeTab} />
         <MarketStories />
-        <button className="flex fixed flex-col right-4 bottom-4 justify-center item-center rounded-full font-serif text-5xl text-white bg-sideBar">+</button>
+        <button className="flex fixed md:pt-0 flex-col right-4 bottom-4 md:h-[4rem] justify-center item-center rounded-full font-serif text-5xl text-white bg-sideBar">+</button>
       </Layout>
     </Context.Provider>
   );
