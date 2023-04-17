@@ -14,7 +14,7 @@ const Layout = (props: PropsWithChildren) => {
         <FeaturedCompanies />
       </div>
 
-      <div className={`grid gap-10 ${sidebarOpen ? "md:grid-cols-[20%_50%_30%]" : "md:grid-cols-[0%_50%_50%]"}`}>
+      <div className={`ease-in-out duration-300 grid gap-10 ${sidebarOpen ? "md:grid-cols-[20%_50%_30%]" : "md:grid-cols-[0%_50%_50%]"}`}>
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
           {props.children}
       </div>
