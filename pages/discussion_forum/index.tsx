@@ -28,16 +28,16 @@ export default function DiscussionForum({activeTab}: Props) {
     : setSectorFilters([...sectorFilters, sectorFilter]);
 
   return (
-    <div className={`${activeTab === "Discussion" ? "block" : "hidden"} md:block bg-background p-2`}>
+    <div className={`${activeTab === "Discussion" ? "block" : "hidden"} place-self-center md:place-self-auto md:block bg-background p-2`}>
       <p className="hidden md:block text-wineRed">DISCUSSION FORUM</p>
-      <div className="ml-10">
+      <div className="md:ml-10">
         Filters
-        <div className="bg-white space-x-4 p-2 text-sm rounded-md shadow-xl my-2 p-5" style={{display: "flex", flexDirection: "row"}}>
+        <div className="md:block bg-white space-y-1 md:space-x-4 p-2 text-xs md:text-sm rounded-md shadow-xl md:my-2 md:p-5">
           {sectors.map((sector) => 
             <button 
               onClick={() => toggleSectorFilter(sector.name)} 
               key={sector.name} 
-              className={`font-sans ${sectorFilters.includes(sector.name) ? ("outline-2 outline-dashed outline-offset-2 outline-black") : "outline-none"} w-max ${sector.color} text-white rounded-3xl px-5 py-2`}>{sector.name}</button>)}
+              className={`font-sans ${sectorFilters.includes(sector.name) ? ("outline-2 outline-dashed outline-offset-2 outline-black") : "outline-none"} w-max ${sector.color} text-white rounded-3xl md:px-5 md:py-2`}>{sector.name}</button>)}
           <input type="text" placeholder="Search here" className="pl-10 bg-origin-border bg-left bg-[length:25px_25px] bg-[url('/search-icon.png')] bg-no-repeat shadow-[inset_0_1px_4px_rgba(0,0,0,0.6)] bg-searchBar p-2 rounded-3xl placeholder:pl-10"></input>
         </div>
         <div className="p-2 overflow-y-scroll h-screen">
