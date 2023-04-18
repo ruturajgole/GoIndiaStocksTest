@@ -6,3 +6,7 @@ Please follow the steps in order to run the application:
 5) Go to the specified URL.
 
 P.S. You must have Node installed.
+
+The application was made for an assignment which was as follows:
+
+[GoIndiaStocks-Nextjs- Assignment.pdf](https://github.com/ruturajpokemon/GoIndiaStocksTest/files/11260493/GoIndiaStocks-Nextjs-.Assignment.pdf)
